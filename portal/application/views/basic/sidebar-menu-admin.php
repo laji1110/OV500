@@ -39,7 +39,7 @@ if (check_account_permission('reports', 'CarrQOSR')) {
 
 
 ////////////////////	
-$menu_title = 'Rates & Pachage';
+$menu_title = 'Rates & Package';
 $menu_array[$menu_title] = array(
     'icon' => '<i class="fa fa-registered"></i>'
 );
@@ -71,7 +71,7 @@ if (check_account_permission('bundle', 'view')) {
     $menu_array[$menu_title]['bundle'] = array(
         'page_name' => array('bundle', 'bundle_index', 'bundle_add', 'bundle_edit'),
         'page_url' => 'bundle',
-        'menu_name' => 'Bundle & Pachage'
+        'menu_name' => 'Bundle & Package'
     );
 }
 
