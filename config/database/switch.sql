@@ -1519,7 +1519,7 @@ CREATE TABLE `did_dst` (
 -- ----------------------------
 -- Records of did_dst
 -- ----------------------------
-INSERT INTO `did_dst` VALUES ('1', '19496743649', 'STC300000', 'CUSTOMER', 'AnandKumar', '2021-07-31 00:00:00', null, '', '');
+INSERT INTO `did_dst` VALUES ('1', '19496743649', 'STC300000', 'CUSTOMER', 'AnandKumar', '2021-07-31 00:00:00', null, 'CUSTOMER', '');
 
 -- ----------------------------
 -- Table structure for `emaillog`
