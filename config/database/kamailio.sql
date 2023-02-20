@@ -303,7 +303,7 @@ CREATE TABLE `dialplan` (
   `match_exp` varchar(64) NOT NULL,
   `match_len` int(11) NOT NULL,
   `subst_exp` varchar(64) NOT NULL,
-  `repl_exp` varchar(256) NOT NULL,
+  `repl_exp` varchar(64) NOT NULL,
   `attrs` varchar(64) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -1007,10 +1007,9 @@ CREATE TABLE `sca_subscriptions` (
   `record_route` text,
   `notify_cseq` int(11) NOT NULL,
   `subscribe_cseq` int(11) NOT NULL,
-  `server_id` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `sca_subscriptions_idx` (`subscriber`,`call_id`,`from_tag`,`to_tag`) USING BTREE,
-  KEY `sca_expires_idx` (`server_id`,`expires`) USING BTREE,
+  KEY `sca_expires_idx` (`expires`) USING BTREE,
   KEY `sca_subscribers_idx` (`subscriber`,`event`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -1103,11 +1102,11 @@ CREATE TABLE `subscriber` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `username` varchar(64) NOT NULL DEFAULT '',
   `domain` varchar(64) NOT NULL DEFAULT '',
-  `password` varchar(64) NOT NULL DEFAULT '',
-  `email_address` varchar(128) DEFAULT NULL,
-  `ha1` varchar(128) NOT NULL DEFAULT '',
-  `ha1b` varchar(128) NOT NULL DEFAULT '',
-  `rpid` varchar(128) DEFAULT NULL,
+  `password` varchar(25) NOT NULL DEFAULT '',
+  `email_address` varchar(64) NOT NULL DEFAULT '',
+  `ha1` varchar(64) NOT NULL DEFAULT '',
+  `ha1b` varchar(64) NOT NULL DEFAULT '',
+  `rpid` varchar(64) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `account_idx` (`username`,`domain`) USING BTREE,
   KEY `username_idx` (`username`) USING BTREE
@@ -1222,17 +1221,16 @@ CREATE TABLE `uacreg` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `l_uuid` varchar(64) NOT NULL DEFAULT '',
   `l_username` varchar(64) NOT NULL DEFAULT '',
-  `l_domain` varchar(64) NOT NULL DEFAULT '',
+  `l_domain` varchar(128) NOT NULL DEFAULT '',
   `r_username` varchar(64) NOT NULL DEFAULT '',
-  `r_domain` varchar(64) NOT NULL DEFAULT '',
+  `r_domain` varchar(128) NOT NULL DEFAULT '',
   `realm` varchar(64) NOT NULL DEFAULT '',
   `auth_username` varchar(64) NOT NULL DEFAULT '',
   `auth_password` varchar(64) NOT NULL DEFAULT '',
-  `auth_proxy` varchar(128) NOT NULL DEFAULT '',
+  `auth_proxy` varchar(64) NOT NULL DEFAULT '',
   `expires` int(11) NOT NULL DEFAULT '0',
   `flags` int(11) NOT NULL DEFAULT '0',
   `reg_delay` int(11) NOT NULL DEFAULT '0',
-  `auth_ha1` varchar(128) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`),
   UNIQUE KEY `l_uuid_idx` (`l_uuid`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -1499,16 +1497,16 @@ INSERT INTO `version` VALUES ('re_grp', '1');
 INSERT INTO `version` VALUES ('rls_presentity', '1');
 INSERT INTO `version` VALUES ('rls_watchers', '3');
 INSERT INTO `version` VALUES ('rtpproxy', '1');
-INSERT INTO `version` VALUES ('sca_subscriptions', '2');
+INSERT INTO `version` VALUES ('sca_subscriptions', '1');
 INSERT INTO `version` VALUES ('silo', '8');
 INSERT INTO `version` VALUES ('sip_trace', '4');
 INSERT INTO `version` VALUES ('speed_dial', '2');
-INSERT INTO `version` VALUES ('subscriber', '7');
+INSERT INTO `version` VALUES ('subscriber', '6');
 INSERT INTO `version` VALUES ('switch_user_sip', '6');
 INSERT INTO `version` VALUES ('topos_d', '1');
 INSERT INTO `version` VALUES ('topos_t', '1');
 INSERT INTO `version` VALUES ('trusted', '6');
-INSERT INTO `version` VALUES ('uacreg', '3');
+INSERT INTO `version` VALUES ('uacreg', '2');
 INSERT INTO `version` VALUES ('uid_credentials', '7');
 INSERT INTO `version` VALUES ('uid_domain', '2');
 INSERT INTO `version` VALUES ('uid_domain_attrs', '1');
