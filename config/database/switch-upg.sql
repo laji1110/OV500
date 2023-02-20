@@ -1,1 +1,0 @@
-UPDATE version SET table_version=7 WHERE TABLE_NAME="customer_sip_account";

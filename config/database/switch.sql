@@ -2688,7 +2688,7 @@ CREATE TABLE `version` (
 -- ----------------------------
 -- Records of version
 -- ----------------------------
-INSERT INTO `version` VALUES ('customer_sip_account', '6');
+INSERT INTO `version` VALUES ('customer_sip_account', '7');
 
 -- ----------------------------
 -- Table structure for `voicemail`
