@@ -70,7 +70,7 @@ class Carrier_mod extends CI_Model {
         }
     }
 
-    function get_data($order_by = '', $limit_to = '', $limit_from = '', $filter_data = array(), $option_param = array()) {
+    function get_data($order_by = '', $limit_from = '', $limit_to = '', $filter_data = array(), $option_param = array()) {
         $final_return_array = $carrier_id_array = $tariff_id_array = array();
         $tariff_id_carrier_id_mapping_array = array();
         try {
